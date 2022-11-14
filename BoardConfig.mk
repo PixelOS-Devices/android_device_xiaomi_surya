@@ -72,6 +72,7 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 
 TARGET_KERNEL_SOURCE := kernel/xiaomi/surya
 TARGET_KERNEL_CONFIG := vendor/sdmsteppe-perf_defconfig vendor/surya.config
+TARGET_KERNEL_NO_GCC := true
 
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x880000
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom androidboot.console=ttyMSM0
