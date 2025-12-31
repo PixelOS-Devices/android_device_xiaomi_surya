@@ -356,12 +356,14 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/build_karna.prop:$(TARGET_COPY_OUT_ODM)/etc/build_karna.prop \
     $(LOCAL_PATH)/build_surya-INT.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-INT.prop \
+    $(LOCAL_PATH)/build_surya-INT_PA_DUPLEX.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-INT_PA_DUPLEX.prop \
     $(LOCAL_PATH)/build_surya-THAI.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-THAI.prop \
     $(LOCAL_PATH)/build_surya-THAI_PA.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-THAI_PA.prop
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/build_karna.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_karna.prop \
     $(LOCAL_PATH)/build_surya-INT.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-INT.prop \
+    $(LOCAL_PATH)/build_surya-INT_PA_DUPLEX.prop:$(TARGET_COPY_OUT_ODM)/etc/build_surya-INT_PA_DUPLEX.prop \
     $(LOCAL_PATH)/build_surya-THAI.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-THAI.prop \
     $(LOCAL_PATH)/build_surya-THAI_PA.prop:$(TARGET_COPY_OUT_RECOVERY)/root/build_surya-THAI_PA.prop
 
