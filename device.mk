@@ -215,6 +215,9 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh
 
+# ION
+$(call soong_config_set_bool,libion,legacy_impl,true)
+
 # IR
 PRODUCT_PACKAGES += \
     android.hardware.ir-service.example

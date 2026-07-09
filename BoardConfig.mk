@@ -146,6 +146,7 @@ TARGET_SCREEN_DENSITY := 400
 
 # Sepolicy
 TARGET_SEPOLICY_DIR := msmsteppe
+include device/lineage/sepolicy/libion/sepolicy.mk
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 
