@@ -49,6 +49,11 @@ lib_fixups: lib_fixups_user_type = {
 blob_fixups: blob_fixups_user_type = {
     'system/framework/WfdCommon.jar': blob_fixup()
         .apktool_patch('blob-patches/WfdCommon.patch'),
+    'system_ext/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
+        .apktool_patch('blob-patches/MiuiCamera'),
+    # Replace the S-era Surface vtable connect() call with ANativeWindow perform(NATIVE_WINDOW_API_CONNECT, NATIVE_WINDOW_API_CPU)
+    ('system_ext/lib64/libcamera_algoup_jni.xiaomi.so', 'system_ext/lib64/libcamera_mianode_jni.xiaomi.so'): blob_fixup()
+        .sig_replace('a8 02 40 f9 e2 03 00 91 41 00 80 52 e0 03 15 aa 08 a9 40 f9 e3 03 1f 2a 00 01 3f d6', 'a0 42 00 91 08 4c 40 f9 a1 01 80 52 42 00 80 52 00 01 3f d6 1f 20 03 d5 1f 20 03 d5'),
     'system_ext/lib64/libwfdservice.so': blob_fixup()
         .replace_needed('android.media.audio.common.types-V4-cpp.so', 'android.media.audio.common.types-V5-cpp.so'),
     'vendor/lib64/libdpps.so': blob_fixup()
@@ -65,6 +70,9 @@ blob_fixups: blob_fixups_user_type = {
         .binary_regex_replace(b'libmegface.so', b'libfacedet.so')
         .binary_regex_replace(b'libMegviiFacepp-0.5.2.so', b'libFaceDetectpp-0.5.2.so')
         .binary_regex_replace(b'megviifacepp_0_5_2_model', b'facedetectpp_0_5_2_model'),
+    # Don't mark the front and rear cameras as conflicting, AOSP cameraserver refuses to open both for dual video
+    'vendor/lib64/hw/com.qti.chi.override.so': blob_fixup()
+        .sig_replace('fb 33 40 f9 f4 2b 40 f9 1b 12 00 b4 f4 11 00 b4', 'fb 33 40 f9 f4 2b 40 f9 90 00 00 14 f4 11 00 b4'),
     ('vendor/lib64/libalAILDC.so', 'vendor/lib64/libalLDC.so', 'vendor/lib64/libalhLDC.so'): blob_fixup()
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')

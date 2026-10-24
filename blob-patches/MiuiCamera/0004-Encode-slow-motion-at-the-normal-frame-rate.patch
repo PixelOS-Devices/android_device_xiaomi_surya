@@ -1,0 +1,52 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ashwin Devi Srinivasan <ashwin@ashds.dev>
+Date: Thu, 22 Oct 2026 11:36:38 +0400
+Subject: [PATCH] Encode slow motion at the normal frame rate
+
+Surya records slow motion as a real-time high frame rate file and leaves
+the slowdown to MIUI Gallery, so other players show it at normal speed.
+Keep the profile frame rate and only raise the capture rate, as the app
+already does on devices that encode the slowdown. That file has no
+usable audio track and does not need every frame to be a key frame.
+---
+ .../android/camera/module/video/RecorderController.smali    | 6 ++----
+ .../com/android/camera/module/video/UserRecordSetting.smali | 2 +-
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/smali/com/android/camera/module/video/RecorderController.smali b/smali/com/android/camera/module/video/RecorderController.smali
+index 03b7b1c..655d25b 100644
+--- a/smali/com/android/camera/module/video/RecorderController.smali
++++ b/smali/com/android/camera/module/video/RecorderController.smali
+@@ -2995,9 +2995,7 @@
+ 
+     if-nez v4, :cond_16
+ 
+-    const/16 v4, 0xac
+-
+-    if-ne v4, v1, :cond_15
++    goto :cond_15
+ 
+     .line 79
+     invoke-static {}, LOooO0O0/OooO0Oo/OooO00o/OooO00o;->o0OOOOO()LOooO0O0/OooO0Oo/OooO00o/OooO00o;
+@@ -3420,7 +3418,7 @@
+ 
+     move-result v1
+ 
+-    if-nez v1, :cond_1e
++    goto :cond_1e
+ 
+     .line 119
+     iget-object v1, v0, Lcom/android/camera/module/video/RecorderController;->mUserSetting:Lcom/android/camera/module/video/UserRecordSetting;
+diff --git a/smali/com/android/camera/module/video/UserRecordSetting.smali b/smali/com/android/camera/module/video/UserRecordSetting.smali
+index 5bfd035..6d10dfe 100644
+--- a/smali/com/android/camera/module/video/UserRecordSetting.smali
++++ b/smali/com/android/camera/module/video/UserRecordSetting.smali
+@@ -2850,7 +2850,7 @@
+ 
+     const/4 v2, 0x1
+ 
+-    xor-int/2addr v1, v2
++    const/4 v1, 0x0
+ 
+     .line 3
+     invoke-virtual {p0}, Lcom/android/camera/module/video/UserRecordSetting;->isNormalMode()Z

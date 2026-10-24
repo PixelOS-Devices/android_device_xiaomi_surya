@@ -1,0 +1,28 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ashwin Devi Srinivasan <ashwin@ashds.dev>
+Date: Thu, 22 Oct 2026 12:32:10 +0400
+Subject: [PATCH] Keep the custom watermark without MiSys
+
+On surya the app first writes the device watermark to persist through
+MiSys and only keeps its own copy when that write succeeds. Nothing on
+this device reads the persist copy: the app draws the device watermark
+itself from its files directory. Without MiSys the local copy was never
+written and capturing with the watermark crashed the snapshot renderer.
+Skip the persist write and always keep the local copy.
+---
+ smali_classes2/com/android/camera/watermark/gen2/WaterMarkUtil2.smali | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smali_classes2/com/android/camera/watermark/gen2/WaterMarkUtil2.smali b/smali_classes2/com/android/camera/watermark/gen2/WaterMarkUtil2.smali
+index f4ac721..1c1dbfe 100644
+--- a/smali_classes2/com/android/camera/watermark/gen2/WaterMarkUtil2.smali
++++ b/smali_classes2/com/android/camera/watermark/gen2/WaterMarkUtil2.smali
+@@ -2085,7 +2085,7 @@
+ 
+     const/16 v5, 0x5a
+ 
+-    if-eqz v4, :cond_0
++    goto :cond_0
+ 
+     .line 5
+     new-instance v0, Ljava/io/ByteArrayOutputStream;

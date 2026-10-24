@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ashwin Devi Srinivasan <ashwin@ashds.dev>
+Date: Fri, 23 Oct 2026 01:19:54 +0400
+Subject: [PATCH] Use the built-in short video mode on surya
+
+Surya inherits Karna's choice of MiLive for short video. MiLive records
+through a native library in a split downloaded at runtime, and with the
+Codec2 encoder that library never writes a video track, so recording
+stops at once. Select the Fun short video mode instead, which records
+through MediaCodec and MediaMuxer in the app itself.
+---
+ smali_classes2/com/mi/device/Karna.smali | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smali_classes2/com/mi/device/Karna.smali b/smali_classes2/com/mi/device/Karna.smali
+index 3c1b0a2..7e4d9f1 100644
+--- a/smali_classes2/com/mi/device/Karna.smali
++++ b/smali_classes2/com/mi/device/Karna.smali
+@@ -236,7 +236,7 @@
+ .method public o000O0o()I
+     .locals 0
+ 
+-    const/4 p0, 0x2
++    const/4 p0, 0x0
+ 
+     return p0
+ .end method

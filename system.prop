@@ -2,7 +2,10 @@
 vendor.bluetooth.soc=cherokee
 
 # Camera
+persist.vendor.camera.privapp.list=com.android.camera
 vendor.camera.aux.packagelist=com.android.camera,org.lineageos.aperture,org.lineageos.aperture.dev
+ro.miui.notch=1
+ro.product.mod_device=surya_eea_global
 
 # CNE
 persist.vendor.cne.feature=1

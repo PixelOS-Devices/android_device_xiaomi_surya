@@ -1,0 +1,1 @@
+allow platform_app_36 app_data_file:file execute;

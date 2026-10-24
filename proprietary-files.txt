@@ -321,6 +321,24 @@ vendor/etc/camera/megviifacepp_0_5_2_model:vendor/etc/camera/facedetectpp_0_5_2_
 vendor/lib64/libMegviiFacepp-0.5.2.so:vendor/lib64/libFaceDetectpp-0.5.2.so
 vendor/lib64/libmegface.so:vendor/lib64/libfacedet.so
 
+# Camera (MiuiCamera)
+system/lib64/libcamera_algoup_jni.xiaomi.so:system_ext/lib64/libcamera_algoup_jni.xiaomi.so;SYMLINK=system_ext/priv-app/MiuiCamera/lib/arm64/libcamera_algoup_jni.xiaomi.so
+system/lib64/libcamera_mianode_jni.xiaomi.so:system_ext/lib64/libcamera_mianode_jni.xiaomi.so;SYMLINK=system_ext/priv-app/MiuiCamera/lib/arm64/libcamera_mianode_jni.xiaomi.so
+system/priv-app/MiuiCamera/MiuiCamera.apk:system_ext/priv-app/MiuiCamera/MiuiCamera.apk;OVERRIDES=Aperture
+
+# Camera (MiuiExtraPhoto)
+system/framework/gson.jar:system_ext/framework/miui-gson.jar
+system/lib64/libdoc_photo.so:system_ext/lib64/libdoc_photo.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/libdoc_photo.so
+system/lib64/libdoc_photo_c++_shared.so:system_ext/lib64/libdoc_photo_c++_shared.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/libdoc_photo_c++_shared.so
+system/lib64/libgallery_arcsoft_dualcam_refocus.so:system_ext/lib64/libgallery_arcsoft_dualcam_refocus.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/libgallery_arcsoft_dualcam_refocus.so
+system/lib64/libgallery_arcsoft_portrait_lighting.so:system_ext/lib64/libgallery_arcsoft_portrait_lighting.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/libgallery_arcsoft_portrait_lighting.so
+system/lib64/libgallery_arcsoft_portrait_lighting_c.so:system_ext/lib64/libgallery_arcsoft_portrait_lighting_c.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/libgallery_arcsoft_portrait_lighting_c.so
+system/lib64/libgallery_mpbase.so:system_ext/lib64/libgallery_mpbase.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/libgallery_mpbase.so
+system/lib64/libmibokeh_gallery.so:system_ext/lib64/libmibokeh_gallery.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/libmibokeh_gallery.so
+system/lib64/librefocus.so:system_ext/lib64/librefocus.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/librefocus.so
+system/lib64/librefocus_mibokeh.so:system_ext/lib64/librefocus_mibokeh.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/MiuiExtraPhoto/lib/arm64/librefocus_mibokeh.so
+system/priv-app/MiuiExtraPhoto/MiuiExtraPhoto.apk:system_ext/priv-app/MiuiExtraPhoto/MiuiExtraPhoto.apk
+
 # Camera (Sensors)
 vendor/lib64/camera/com.qti.sensor.ofilm_hi259.so
 vendor/lib64/camera/com.qti.sensor.ofilm_imx682.so
